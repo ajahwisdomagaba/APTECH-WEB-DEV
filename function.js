@@ -49,7 +49,7 @@ for (let name of persons) {
 console.log("</ul><br>");
 
 // Function that receives an array.
-function chnageArr(arr) {
+function changeArr(arr) {
   // Change the first element, Since arrays are passed by reference,the original array will also change.
   arr[0] = "Stuart";
 
@@ -101,7 +101,7 @@ function factorial(num) {
   // NOTE: This is incorrect. Mathematically: 0! = 1
 
   if (num == 0) {
-    return 0; // Should be return 1;
+    return 1; // Should be return 1;
   }
 
   // 1! = 1
@@ -193,7 +193,7 @@ console.log(sq.cal_area());
 
 // CALCULATE DIAMETER
 // NOTE: Parameter "rad" wasn't used.Since we use this.radius, you don't need the parameter.
-function calc_diameter(rad) {
+function calc_diameter() {
   return this.radius * 2;
 }
 
