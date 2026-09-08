@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+// ==========================
+// ABSTRACTION
+// ==========================
+
+// Blueprint for creating a coffee machine
+class CoffeeMachine {
+
+  // Private method - only this class can use it
+  #boilWater() {
+    console.log("Boiling water...");
+  }
+
+  // Another private method
+  #brewCoffee() {
+    console.log("Coffee brewing...");
+  }
+
+  // Public method that the user can access
+  // It hides the internal steps (abstraction)
+  makeCoffee() {
+    this.#boilWater();   // Call the private method to boil water
+    this.#brewCoffee();  // Call the private method to brew coffee
+
+    return "Coffee is ready!";
+  }
+}
+
+// Create an object (instance) of CoffeeMachine
+let CM = new CoffeeMachine();
+
+// Call the public method
+console.log(CM.makeCoffee());
+
+
+
+// ==========================
+// POLYMORPHISM
+// ==========================
+
+// Parent class
+class Bird {
+
+  // Method that can be inherited
+  fly() {
+    return "The bird is flying";
+  }
+}
+
+// Child class inherits from Bird
+class Penguin extends Bird {
+
+  // Override the parent's fly() method
+  fly() {
+    return "Penguins can't fly";
+  }
+}
+
+// Create objects
+let bird = new Bird();
+let penguin = new Penguin();
+
+// Same method, different behavior
+console.log(bird.fly());
+console.log(penguin.fly());
+
+
+
+// ==========================
+// INHERITANCE
+// ==========================
+
+// Parent class
+class Animal {
+
+  // Constructor initializes object properties
+  constructor(name) {
+    this.name = name;
+  }
+
+  // Method available to all animals
+  eat() {
+    return `${this.name} is eating`;
+  }
+}
+
+// Child class inherits from Animal
+class Dog extends Animal {
+
+  constructor(name, breed) {
+
+    // Call the parent constructor
+    super(name);
+
+    // Add a new property specific to Dog
+    this.breed = breed;
+  }
+}
+
+// Create a Dog object
+let dog1 = new Dog("Bingo", "Rottweiler");
+
+// Inherited method from Animal
+console.log(dog1.eat());
+
+
+
+// ==========================
+// ENCAPSULATION
+// ==========================
+
+class BankAccount {
+
+  // Private field (cannot be accessed outside the class)
+  #initialDeposit;
+
+  constructor(initialDeposit, name) {
+
+    // Store the initial balance
+    this.#initialDeposit = initialDeposit;
+
+    // Store the account owner's name
+    this.owner = name;
+  }
+
+  // Getter method to check balance
+  balance() {
+    return this.#initialDeposit;
+  }
+
+  // Deposit money into the account
+  deposit(amount) {
+
+    // Only allow positive deposits
+    if (amount > 0) {
+      this.#initialDeposit += amount;
+    }
+  }
+}
+
+// Create a bank account object
+let acc1 = new BankAccount(20000, "Wisdom Ajah");
+
+// Display the object
+console.log(acc1);
+
+// Deposit money
+acc1.deposit(12000);
+
+// Display updated balance
+console.log(acc1.balance());
+
+
+
+// ==========================
+// CLASS & OBJECT
+// ==========================
+
+// Blueprint for creating cars
+class Car {
+
+  // Constructor runs automatically when an object is created
+  constructor(brand, theSpeed) {
+
+    // Store the car brand
+    this.brand = brand;
+
+    // Store the car speed
+    this.theSpeed = theSpeed;
+  }
+
+  // Method that returns the car's movement
+  drive() {
+    return `${this.brand} is moving at ${this.theSpeed} km/hr`;
+  }
+}
+
+// Create a Car object
+let car1 = new Car("Tesla", 200);
+
+// Access a property
+console.log(car1.theSpeed);
+
+// Call a method
+console.log(car1.drive());
+
+  </script>
+
+</body>
+
+</html>
